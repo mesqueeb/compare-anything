@@ -26,7 +26,12 @@
     "javascript",
     "compare",
     "countif",
-    "duplicates"
+    "count-if",
+    "duplicates",
+    "compare-objects",
+    "compare-arrays",
+    "find-duplicates",
+    "remove-duplicates"
   ],
   "bugs": {
     "url": "https://github.com/mesqueeb/compare-anything/issues"
