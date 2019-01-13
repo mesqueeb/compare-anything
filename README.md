@@ -30,17 +30,19 @@ You can do all kind of things with compare-anything!
 
 ## Compare object props
 
-Which props are present in which objects. Will return an info object with:
+Which props are present in which objects. Remember, **this function only looks at the prop-names!** Not the values.
+
+Will return an info object with:
 
 - `props` - an array with all props of all objects
-- `presentInAll` - true/false per prop
+- `presentInAll` - is the prop present in all passed objects? `true`/`false` per prop
 - `presentIn` - the param indexes of where the prop was present
 
 ```js
 import { compareObjectProps } from 'compare-anything'
 
-const objectA = {a: '🎴', b: '🃏️', c: '🃏️', d: '🎴'}
-const objectB = {b: '🃏️', c: '🃏️', e: '🀄️', f: '🀄️'}
+const objectA = {a: '🎴', b: '🃏️?', c: '🃏️?', d: '🎴'}
+const objectB = {b: '🃏️!', c: '🃏️!', e: '🀄️', f: '🀄️'}
 
 compareObjectProps(objectA, objectB)
 // returns ↓
@@ -66,12 +68,12 @@ If we require to check even **nested props** we can use the [flatten-anything](h
 import flatten from 'flatten-anything'
 import { compareObjectProps } from 'compare-anything'
 
-const objectA = {nested: {a: '🃏️', b: '🎴'}}
-const objectB = {nested: {a: '🃏', c: '🀄️'}}
+const objectA = {nested: {a: '🃏️?', b: '🎴'}}
+const objectB = {nested: {a: '🃏!', c: '🀄️'}}
 const flatA = flatten(objectA)
-// →　{'nested.a': '🃏️', 'nested.b': '🎴'}
+// →　{'nested.a': '🃏️?', 'nested.b': '🎴'}
 const flatB = flatten(objectB)
-// →　{'nested.a': '🃏️', 'nested.c': '🀄️'}
+// →　{'nested.a': '🃏️!', 'nested.c': '🀄️'}
 
 compareObjectProps(flatA, flatB)
 // returns ↓
