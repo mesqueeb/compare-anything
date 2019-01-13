@@ -1,5 +1,9 @@
 # Compare anything 🛰
 
+```
+npm i compare-anything
+```
+
 Compares objects and arrays and tells you which props or values are duplicates, and which are only present once.
 
 It works just like you would compare two columns in excel! But who needs excel when you've got JavaScript, am I right? 😃
@@ -10,7 +14,7 @@ It works just like you would compare two columns in excel! But who needs excel w
 - [filter-anything ⚔️](https://github.com/mesqueeb/filter-anything)
 - [find-and-replace-anything 🎣](https://github.com/mesqueeb/find-and-replace-anything)
 - [compare-anything 🛰](https://github.com/mesqueeb/compare-anything)
-- copy-anything (WIP)
+- [copy-anything 🎭](https://github.com/mesqueeb/copy-anything)
 - [is-what 🙉](https://github.com/mesqueeb/is-what)
 
 ## Usage
