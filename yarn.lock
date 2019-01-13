@@ -1268,6 +1268,13 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
+flatten-anything@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/flatten-anything/-/flatten-anything-1.0.0.tgz#b175cb4d717a8831e644ccd4254fc663b05a0594"
+  integrity sha512-UvNcgCjMiFw1nSsf/b4j9MA+apNwNmhXYNSs0pozt/J+9FN3RUb3TQKkGwG/qa0o46tqOXahuZWGpqWHCLVtaQ==
+  dependencies:
+    is-what "^3.1.2"
+
 for-in@^1.0.1, for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"

@@ -39,8 +39,8 @@ Which props are present in which objects. Will return an info object with:
 ```js
 import { compareObjectProps } from 'compare-anything'
 
-const objectA = {a: '', b: '', c: '', d: ''}
-const objectB = {b: '', c: '', e: '', f: ''}
+const objectA = {a: '🎴', b: '🃏️', c: '🃏️', d: '🎴'}
+const objectB = {b: '🃏️', c: '🃏️', e: '🀄️', f: '🀄️'}
 
 compareObjectProps(objectA, objectB)
 // returns ↓
@@ -50,6 +50,38 @@ compareObjectProps(objectA, objectB)
   presentIn: { a: [0], b: [0, 1], c: [0, 1], d: [0], e: [1], f: [1] },
 }
 ```
+
+You can pass **as many arguments as you want**!
+
+```js
+compareObjectProps(objectA, objectB, objectC, objectD, objectE)
+// keep on adding objects to compare!
+```
+
+### Nested props
+
+If we require to check even **nested props** we can use the [flatten-anything](https://github.com/mesqueeb/flatten-anything) function like shown below:
+
+```js
+import flatten from 'flatten-anything'
+import { compareObjectProps } from 'compare-anything'
+
+const objectA = {nested: {a: '🃏️', b: '🎴'}}
+const objectB = {nested: {a: '🃏', c: '🀄️'}}
+const flatA = flatten(objectA)
+// →　{'nested.a': '🃏️', 'nested.b': '🎴'}
+const flatB = flatten(objectB)
+// →　{'nested.a': '🃏️', 'nested.c': '🀄️'}
+
+compareObjectProps(flatA, flatB)
+// returns ↓
+{
+  props: ['nested.a', 'nested.b', 'nested.c'],
+  presentInAll: { 'nested.a': true, 'nested.b': false, 'nested.c': false },
+  presentIn: { 'nested.a': [0, 1], 'nested.b': [0], 'nested.c': [1] }
+}
+```
+
 
 <!-- ## Compare object values
 
