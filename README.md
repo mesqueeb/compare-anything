@@ -23,10 +23,59 @@ It works just like you would expect. You `compare(objectA, objectB)` and it give
 
 You can do all kind of things with compare-anything!
 
-1. Compare arrays, to see which values are present in all arrays and which not
-2. Compare object props, to see which props are present in all objects and which not
-3. Compare object values, to see which prop values are equal in all objects and which not
+1. Compare object props, to see which props are present in all objects and which not
+2. (WIP) Compare object values, to see which prop values are equal in all objects and which not
+3. (WIP) Compare arrays, to see which values are present in all arrays and which not
 
+## Compare object props
+
+Which props are present in which objects. Will return an info object with:
+
+- `props` - an array with all props of all objects
+- `presentInAll` - true/false per prop
+- `presentIn` - the param indexes of where the prop was present
+
+```js
+import { compareObjectProps } from 'compare-anything'
+
+const objectA = {a: '', b: '', c: '', d: ''}
+const objectB = {b: '', c: '', e: '', f: ''}
+
+compareObjectProps(objectA, objectB)
+// returns ↓
+{
+  props: ['a', 'b', 'c', 'd', 'e', 'f'],
+  presentInAll: { a: false, b: true, c: true, d: false, e: false, f: false },
+  presentIn: { a: [0], b: [0, 1], c: [0, 1], d: [0], e: [1], f: [1] },
+}
+```
+
+<!-- ## Compare object values
+
+Which values are the same in which objects. Will return an info object with:
+
+- `props` - an array with all props of all objects
+- `sameInAll` - true/false per prop
+- `sameIn` - sets of indexes of the objects where the value was equal
+
+```js
+import { compareObjectValues } from 'compare-anything'
+
+const objectA = {a: '', b: 'same', c: 'diff', d: ''}
+const objectB = {b: 'same', c: 'Diff', e: '', f: ''}
+const objectC = {b: 'same', c: 'Diff'}
+const objectE = {b: 'same', c: 'diff'}
+
+compareObjectValues(objectA, objectB)
+// returns ↓
+{
+  props: ['a', 'b', 'c', 'd', 'e', 'f'],
+  sameInAll: { a: false, b: true, c: false, d: false, e: false, f: false },
+  sameIn: { a: [], b: [[0, 1, 2, 3]], c: [[0, 3], [1, 2]], d: [], e: [], f: [] },
+}
+``` -->
+
+<!--
 ## Compare arrays
 
 Which values are present in which arrays. Will return an info object with:
@@ -53,51 +102,4 @@ compareArrays(arrayA, arrayB)
   ]),
 }
 ```
-
-## Compare object props
-
-Which props are present in which objects. Will return an info object with:
-
-- `props` - an array with all props of all objects
-- `presentInAll` - true/false per prop
-- `presentIn` - the param indexes of where the prop was present
-
-```js
-import { compareObjectProps } from 'compare-anything'
-
-const objectA = {a: '', b: '', c: '', d: ''}
-const objectB = {b: '', c: '', e: '', f: ''}
-
-compareObjectProps(objectA, objectB)
-// returns ↓
-{
-  props: ['a', 'b', 'c', 'd', 'e', 'f'],
-  presentInAll: { a: false, b: true, c: true, d: false, e: false, f: false },
-  presentIn: { a: [0], b: [0, 1], c: [0, 1], d: [0], e: [1], f: [1] },
-}
-```
-
-## Compare object values
-
-Which values are the same in which objects. Will return an info object with:
-
-- `props` - an array with all props of all objects
-- `sameInAll` - true/false per prop
-- `sameIn` - sets of indexes of the objects where the value was equal
-
-```js
-import { compareObjectValues } from 'compare-anything'
-
-const objectA = {a: '', b: 'same', c: 'diff', d: ''}
-const objectB = {b: 'same', c: 'Diff', e: '', f: ''}
-const objectC = {b: 'same', c: 'Diff'}
-const objectE = {b: 'same', c: 'diff'}
-
-compareObjectValues(objectA, objectB)
-// returns ↓
-{
-  props: ['a', 'b', 'c', 'd', 'e', 'f'],
-  sameInAll: { a: false, b: true, c: false, d: false, e: false, f: false },
-  sameIn: { a: [], b: [[0, 1, 2, 3]], c: [[0, 3], [1, 2]], d: [], e: [], f: [] },
-}
-```
+ -->
