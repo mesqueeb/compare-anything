@@ -57,8 +57,11 @@ compareObjectProps(objectA, objectB)
 You can pass **as many arguments as you want**!
 
 ```js
-compareObjectProps(objectA, objectB, objectC, objectD, objectE)
 // keep on adding objects to compare!
+compareObjectProps(objectA, objectB, objectC, objectD, objectE)
+
+// you can compare an array of objects like so:
+compareObjectProps(...objectArray)
 ```
 
 ### Nested props
@@ -71,6 +74,7 @@ import { compareObjectProps } from 'compare-anything'
 
 const objectA = {nested: {a: '🃏️?', b: '🎴'}}
 const objectB = {nested: {a: '🃏!', c: '🀄️'}}
+
 const flatA = flatten(objectA)
 // →　{'nested.a': '🃏️?', 'nested.b': '🎴'}
 const flatB = flatten(objectB)
