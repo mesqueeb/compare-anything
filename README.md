@@ -41,6 +41,7 @@ Will return an info object with:
 ```js
 import { compareObjectProps } from 'compare-anything'
 
+// only props 'b' and 'c' are present in both ↓
 const objectA = {a: '🎴', b: '🃏️?', c: '🃏️?', d: '🎴'}
 const objectB = {b: '🃏️!', c: '🃏️!', e: '🀄️', f: '🀄️'}
 
