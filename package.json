@@ -1,6 +1,6 @@
 {
   "name": "compare-anything",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Compares objects and arrays and tells you which props or values are duplicates, and which are only present once.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -19,7 +19,7 @@
   "devDependencies": {
     "ava": "^1.0.1",
     "flatten-anything": "^1.0.0",
-    "rollup-plugin-typescript2": "^0.18.1",
+    "rollup-plugin-typescript2": "^0.19.2",
     "typescript": "^3.2.2"
   },
   "keywords": [
