@@ -1,4 +1,4 @@
-import { isPlainObject } from 'is-what';
+import { isAnyObject } from 'is-what';
 
 function compareObjectProps() {
     var params = [];
@@ -9,15 +9,19 @@ function compareObjectProps() {
         props: new Set(),
         presentInAll: null,
         presentIn: {},
+        perProp: {},
     };
     params.forEach(function (object, index) {
-        if (!isPlainObject(object))
+        if (!isAnyObject(object))
             return console.error('\'compareObjectProps\' can only compare objects');
         Object.keys(object).forEach(function (prop) {
             res.props.add(prop);
             if (!(prop in res.presentIn))
                 res.presentIn[prop] = [];
             res.presentIn[prop].push(index);
+            if (!(prop in res.perProp))
+                res.perProp[prop] = [];
+            res.perProp[prop].push(object);
         });
     });
     var paramCount = params.length;

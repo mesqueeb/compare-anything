@@ -24,9 +24,9 @@ It works just like you would expect. You `compare(objectA, objectB)` and it give
 
 You can do all kind of things with compare-anything!
 
-1. Compare object props, to see which props are present in all objects and which not
-2. (WIP) Compare object values, to see which prop values are equal in all objects and which not
-3. (WIP) Compare arrays, to see which values are present in all arrays and which not
+- Compare object props, to see which props are present in which objects
+<!-- 2. (WIP) Compare object values, to see which prop values are equal in all objects and which not
+3. (WIP) Compare arrays, to see which values are present in all arrays and which not -->
 
 ## Compare object props
 
@@ -36,7 +36,8 @@ Will return an info object with:
 
 - `props` - an array with all props of all objects
 - `presentInAll` - is the prop present in all passed objects? `true`/`false` per prop
-- `presentIn` - the param indexes of where the prop was present
+- `perProp` - an array of objects per prop that had that specific prop
+- `presentIn` - an array of indexes per prop that had that specific prop (indexes of the params you passed to the function)
 
 ```js
 import { compareObjectProps } from 'compare-anything'
@@ -50,19 +51,40 @@ compareObjectProps(objectA, objectB)
 {
   props: ['a', 'b', 'c', 'd'],
   presentInAll: { a: false, b: true, c: true, d: false },
-  presentIn: { a: [0], b: [0, 1], c: [0, 1], d: [1] },
+  perProp: { a: [objectA], b: [objectA, objectB], c: [objectA, objectB], d: [objectB] },
+  presentIn: { a: [0], b: [0, 1], c: [0, 1], d: [1] }
 }
 ```
+
+### Compare more than two
 
 You can pass **as many arguments as you want**!
 
 ```js
 // keep on adding objects to compare!
 compareObjectProps(objectA, objectB, objectC, objectD, objectE)
+```
 
+### Compare objects in an array
+
+When you need to compare objects in an array you can use destructuring:
+
+```js
 // you can compare an array of objects like so:
 compareObjectProps(...objectArray)
 ```
+
+### Find duplicates based on one prop value
+
+When you need to find duplicate objects based on one single prop value of that object, you can easily do so as follows:
+
+```js
+compareObjectProps(...arrayOfObjects.map(obj => {
+  return { [obj.idField]: obj }
+}))
+```
+
+In the example above you can change `idField` by the actual prop name you need. By making a key out of the value you can easily find duplicates based on just this field.
 
 ### Nested props
 
@@ -85,6 +107,7 @@ compareObjectProps(flatA, flatB)
 {
   props: ['nested.a', 'nested.b', 'nested.c'],
   presentInAll: { 'nested.a': true, 'nested.b': false, 'nested.c': false },
+  perProp: { 'nested.a': [objectA, objectB], 'nested.b': [objectA], 'nested.c': [objectB] },
   presentIn: { 'nested.a': [0, 1], 'nested.b': [0], 'nested.c': [1] }
 }
 ```
