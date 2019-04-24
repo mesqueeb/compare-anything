@@ -42,15 +42,15 @@ Will return an info object with:
 import { compareObjectProps } from 'compare-anything'
 
 // only props 'b' and 'c' are present in both ↓
-const objectA = {a: '🎴', b: '🃏️?', c: '🃏️?', d: '🎴'}
-const objectB = {b: '🃏️!', c: '🃏️!', e: '🀄️', f: '🀄️'}
+const objectA = {a: '🎴', b: '🎴', c: '🎴'}
+const objectB = {b: '🀄️', c: '🀄️', d: '🀄️'}
 
 compareObjectProps(objectA, objectB)
 // returns ↓
 {
-  props: ['a', 'b', 'c', 'd', 'e', 'f'],
-  presentInAll: { a: false, b: true, c: true, d: false, e: false, f: false },
-  presentIn: { a: [0], b: [0, 1], c: [0, 1], d: [0], e: [1], f: [1] },
+  props: ['a', 'b', 'c', 'd'],
+  presentInAll: { a: false, b: true, c: true, d: false },
+  presentIn: { a: [0], b: [0, 1], c: [0, 1], d: [1] },
 }
 ```
 
@@ -72,13 +72,13 @@ If we require to check even **nested props** we can use the [flatten-anything](h
 import flatten from 'flatten-anything'
 import { compareObjectProps } from 'compare-anything'
 
-const objectA = {nested: {a: '🃏️?', b: '🎴'}}
-const objectB = {nested: {a: '🃏!', c: '🀄️'}}
+const objectA = {nested: {a: '🎴', b: '🎴'}}
+const objectB = {nested: {a: '🀄️', c: '🀄️'}}
 
 const flatA = flatten(objectA)
-// →　{'nested.a': '🃏️?', 'nested.b': '🎴'}
+// →　{'nested.a': '🎴', 'nested.b': '🎴'}
 const flatB = flatten(objectB)
-// →　{'nested.a': '🃏️!', 'nested.c': '🀄️'}
+// →　{'nested.a': '🀄️', 'nested.c': '🀄️'}
 
 compareObjectProps(flatA, flatB)
 // returns ↓
