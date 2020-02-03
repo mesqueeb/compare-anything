@@ -42,36 +42,53 @@ export function compareArrays (
   ...params: any[][]
 ): {
   values: any[]
-  presentInAll: { [prop: string]: boolean }
-  perValue: { [prop: string]: plainObject }
-  presentIn: { [prop: string]: number[] }
+  infoPerValue: {
+    [prop: string]: {
+      indexPerArray: (number | undefined)[]
+      presentInAll: boolean
+    }
+  }
+  presentInAll: any[]
 } {
   const valuesSet = new Set()
-  const res = {
+  const res: {
+    values: null | any[]
+    infoPerValue: {
+      [val: string]: {
+        indexPerArray: (number | undefined)[]
+        presentInAll: boolean
+      }
+    }
+    presentInAll: string[]
+  } = {
     values: null,
-    presentInAll: null,
-    presentIn: {},
-    perValue: {}
+    infoPerValue: {},
+    presentInAll: []
   }
-  params.forEach((array, index) => {
+  const getEmptyArray = (): undefined[] => params.map(() => undefined)
+  params.forEach((array, paramIndex) => {
     if (!isArray(array))
       throw new Error("'compareArrays' can only compare arrays")
-    array.forEach(val => {
+    array.forEach((val, valIndex) => {
       valuesSet.add(val)
       const parsedVal =
         isNumber(val) || isString(val) ? String(val) : JSON.stringify(val)
-      if (!(parsedVal in res.presentIn)) res.presentIn[parsedVal] = []
-      res.presentIn[parsedVal].push(index)
-      if (!(parsedVal in res.perValue)) res.perValue[parsedVal] = []
-      res.perValue[parsedVal].push(array)
+      if (!(parsedVal in res.infoPerValue)) {
+        res.infoPerValue[parsedVal] = {
+          indexPerArray: getEmptyArray(),
+          presentInAll: false
+        }
+      }
+      res.infoPerValue[parsedVal].indexPerArray[paramIndex] = valIndex
     })
   })
-  const paramCount = params.length
-  res.presentInAll = Object.keys(res.presentIn).reduce((carry, prop) => {
-    const propCount = res.presentIn[prop].length
-    carry[prop] = propCount === paramCount
-    return carry
-  }, {})
+  Object.entries(res.infoPerValue).forEach(([parsedVal, info]) => {
+    const isInAllArrays =
+      info.indexPerArray.every(index => isNumber(index) && index >= 0) &&
+      info.indexPerArray.length === params.length
+    info.presentInAll = isInAllArrays
+    if (isInAllArrays) res.presentInAll.push(parsedVal)
+  })
   res.values = Array.from(valuesSet)
   return res
 }

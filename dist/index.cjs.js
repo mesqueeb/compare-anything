@@ -46,30 +46,33 @@ function compareArrays() {
     var valuesSet = new Set();
     var res = {
         values: null,
-        presentInAll: null,
-        presentIn: {},
-        perValue: {}
+        infoPerValue: {},
+        presentInAll: []
     };
-    params.forEach(function (array, index) {
+    var getEmptyArray = function () { return params.map(function () { return undefined; }); };
+    params.forEach(function (array, paramIndex) {
         if (!isWhat.isArray(array))
             throw new Error("'compareArrays' can only compare arrays");
-        array.forEach(function (val) {
+        array.forEach(function (val, valIndex) {
             valuesSet.add(val);
             var parsedVal = isWhat.isNumber(val) || isWhat.isString(val) ? String(val) : JSON.stringify(val);
-            if (!(parsedVal in res.presentIn))
-                res.presentIn[parsedVal] = [];
-            res.presentIn[parsedVal].push(index);
-            if (!(parsedVal in res.perValue))
-                res.perValue[parsedVal] = [];
-            res.perValue[parsedVal].push(array);
+            if (!(parsedVal in res.infoPerValue)) {
+                res.infoPerValue[parsedVal] = {
+                    indexPerArray: getEmptyArray(),
+                    presentInAll: false
+                };
+            }
+            res.infoPerValue[parsedVal].indexPerArray[paramIndex] = valIndex;
         });
     });
-    var paramCount = params.length;
-    res.presentInAll = Object.keys(res.presentIn).reduce(function (carry, prop) {
-        var propCount = res.presentIn[prop].length;
-        carry[prop] = propCount === paramCount;
-        return carry;
-    }, {});
+    Object.entries(res.infoPerValue).forEach(function (_a) {
+        var parsedVal = _a[0], info = _a[1];
+        var isInAllArrays = info.indexPerArray.every(function (index) { return isWhat.isNumber(index) && index >= 0; }) &&
+            info.indexPerArray.length === params.length;
+        info.presentInAll = isInAllArrays;
+        if (isInAllArrays)
+            res.presentInAll.push(parsedVal);
+    });
     res.values = Array.from(valuesSet);
     return res;
 }

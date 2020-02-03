@@ -82,15 +82,14 @@ test('compareArrays', t => {
   res = compareArrays(arrayA, arrayB)
   t.deepEqual(res, {
     values: ['a', 'b', 'c', 'd', 'e', 'f'],
-    presentInAll: { a: false, b: true, c: true, d: false, e: false, f: false },
-    presentIn: { a: [0], b: [0, 1], c: [0, 1], d: [0], e: [1], f: [1] },
-    perValue: {
-      a: [arrayA],
-      b: [arrayA, arrayB],
-      c: [arrayA, arrayB],
-      d: [arrayA],
-      e: [arrayB],
-      f: [arrayB]
-    }
+    infoPerValue: {
+      a: { indexPerArray: [0, undefined], presentInAll: false },
+      b: { indexPerArray: [1, 0], presentInAll: true },
+      c: { indexPerArray: [2, 1], presentInAll: true },
+      d: { indexPerArray: [3, undefined], presentInAll: false },
+      e: { indexPerArray: [undefined, 2], presentInAll: false },
+      f: { indexPerArray: [undefined, 3], presentInAll: false }
+    },
+    presentInAll: ['b', 'c']
   })
 })

@@ -15,14 +15,12 @@ export declare function compareObjectProps(...params: plainObject[]): {
 };
 export declare function compareArrays(...params: any[][]): {
     values: any[];
-    presentInAll: {
-        [prop: string]: boolean;
+    infoPerValue: {
+        [prop: string]: {
+            indexPerArray: (number | undefined)[];
+            presentInAll: boolean;
+        };
     };
-    perValue: {
-        [prop: string]: plainObject;
-    };
-    presentIn: {
-        [prop: string]: number[];
-    };
+    presentInAll: any[];
 };
 export {};
