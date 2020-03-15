@@ -1,6 +1,6 @@
 import test from 'ava'
 import flatten from 'flatten-anything'
-import { compareObjectProps, compareArrays } from '../dist/index.cjs'
+import { compareObjectProps, compareArrays } from '../src/index'
 
 test('compareObjectProps', t => {
   let res, objectA, objectB
