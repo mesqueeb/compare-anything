@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "downlevelIteration": true,
     "outDir": "./dist",
     "declaration": true,
     "declarationDir": "./types/",

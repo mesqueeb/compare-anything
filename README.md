@@ -25,8 +25,8 @@ It works just like you would expect. You `compare(objectA, objectB)` and it give
 You can do all kind of things with compare-anything!
 
 - Compare object props, to see which props are present in which objects
-<!-- 2. (WIP) Compare object values, to see which prop values are equal in all objects and which not
-3. (WIP) Compare arrays, to see which values are present in all arrays and which not -->
+  <!-- 2. (WIP) Compare object values, to see which prop values are equal in all objects and which not -->
+  <!-- 3. (WIP) Compare arrays, to see which values are present in all arrays and which not -->
 
 ## Compare object props
 
@@ -79,9 +79,11 @@ compareObjectProps(...objectArray)
 When you need to find duplicate objects based on one single prop value of that object, you can easily do so as follows:
 
 ```js
-compareObjectProps(...arrayOfObjects.map(obj => {
-  return { [obj.idField]: obj }
-}))
+compareObjectProps(
+  ...arrayOfObjects.map(obj => {
+    return { [obj.idField]: obj }
+  })
+)
 ```
 
 In the example above you can change `idField` by the actual prop name you need. By making a key out of the value you can easily find duplicates based on just this field.
@@ -111,7 +113,6 @@ compareObjectProps(flatA, flatB)
   presentIn: { 'nested.a': [0, 1], 'nested.b': [0], 'nested.c': [1] }
 }
 ```
-
 
 <!-- ## Compare object values
 
@@ -165,4 +166,4 @@ compareArrays(arrayA, arrayB)
   ]),
 }
 ```
- -->
+-->

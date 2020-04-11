@@ -1,7 +1,7 @@
 {
   "name": "compare-anything",
   "sideEffects": false,
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Compares objects and arrays and tells you which props or values are duplicates, and which are only present once.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,19 +16,20 @@
     "build": "npm run lint && npm run rollup && npm run test"
   },
   "dependencies": {
+    "filter-anything": "^2.1.2",
     "is-what": "^3.7.1"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.23.0",
-    "@typescript-eslint/parser": "^2.23.0",
-    "ava": "^3.5.0",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "ava": "^3.6.0",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
+    "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-tree-shaking": "^1.8.0",
     "flatten-anything": "^1.4.1",
     "rollup": "^1.32.1",
     "rollup-plugin-typescript2": "^0.21.2",
-    "ts-node": "^8.6.2",
+    "ts-node": "^8.8.2",
     "typescript": "^3.8.3"
   },
   "keywords": [

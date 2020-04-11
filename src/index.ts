@@ -1,5 +1,8 @@
 import { isAnyObject, isArray, isString, isNumber } from 'is-what'
 
+export { compareObjectsBasedOn } from './compareObjectsBasedOn'
+export { compareObjectArraysBasedOn } from './compareObjectArraysBasedOn'
+
 type plainObject = { [key: string]: any }
 
 export function compareObjectProps (
