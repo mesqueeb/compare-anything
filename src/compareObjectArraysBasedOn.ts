@@ -13,7 +13,7 @@ export function compareObjectArraysBasedOn<
   ObjectType extends PlainObject | any = PlainObject
 > (
   propKeys: (keyof ObjectType)[],
-  objectArrays: ObjectType[][]
+  objectArrays: [[ObjectType, ...any[]], ...any[]]
 ): ComparisonObjectArrays<ObjectType> {
   const firstArray = objectArrays[0]
   const comparison: ComparisonObjectArrays<ObjectType> = {
@@ -21,8 +21,8 @@ export function compareObjectArraysBasedOn<
     equal: true
   }
   firstArray.forEach((object, index) => {
-    const objectsToCompare: ObjectType[] = objectArrays.map(arr => arr[index])
-    const compared = compareObjectsBasedOn(propKeys, objectsToCompare)
+    const objectsToCompare = objectArrays.map(arr => arr[index])
+    const compared = compareObjectsBasedOn(propKeys, objectsToCompare as any)
     if (!compared.equal) comparison.equal = false
     comparison.perIndex.push(compared)
   })

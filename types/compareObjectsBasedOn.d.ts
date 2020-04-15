@@ -4,4 +4,4 @@ export declare type ComparisonObjects<ObjectType> = {
     differentPropsPicked: Partial<ObjectType>[];
     equal: boolean;
 };
-export declare function compareObjectsBasedOn<ObjectType extends PlainObject | any = PlainObject>(propKeys: (keyof ObjectType)[], objects: ObjectType[]): ComparisonObjects<ObjectType>;
+export declare function compareObjectsBasedOn<ObjectType extends PlainObject | any = PlainObject>(propKeys: (keyof ObjectType)[], objects: [ObjectType, ...any[]]): ComparisonObjects<ObjectType>;
