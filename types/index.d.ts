@@ -1,3 +1,5 @@
+export { compareObjectsBasedOn } from './compareObjectsBasedOn';
+export { compareObjectArraysBasedOn } from './compareObjectArraysBasedOn';
 declare type plainObject = {
     [key: string]: any;
 };
@@ -23,4 +25,3 @@ export declare function compareArrays(...params: any[][]): {
     };
     presentInAll: any[];
 };
-export {};

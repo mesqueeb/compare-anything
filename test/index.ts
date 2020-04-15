@@ -1,5 +1,5 @@
 import test from 'ava'
-import flatten from 'flatten-anything'
+import { flatten } from 'flatten-anything'
 import { compareObjectProps, compareArrays } from '../src/index'
 
 test('compareObjectProps', t => {

@@ -21,8 +21,9 @@ export function compareObjectProps (
     perProp: {}
   }
   params.forEach((object, index) => {
-    if (!isAnyObject(object))
+    if (!isAnyObject(object)) {
       throw new Error("'compareObjectProps' can only compare objects")
+    }
     Object.keys(object).forEach(prop => {
       propsSet.add(prop)
       if (!(prop in res.presentIn)) res.presentIn[prop] = []
