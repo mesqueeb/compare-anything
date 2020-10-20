@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "downlevelIteration": true,
     "outDir": "./dist",
     "declaration": true,
