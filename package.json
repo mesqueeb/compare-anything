@@ -29,6 +29,7 @@
     "flatten-anything": "^2.0.1",
     "rollup": "^2.6.1",
     "rollup-plugin-typescript2": "^0.27.0",
+    "tsconfig-paths": "^3.9.0",
     "ts-node": "^8.8.2",
     "typescript": "^3.8.3"
   },
@@ -49,7 +50,12 @@
   },
   "homepage": "https://github.com/mesqueeb/compare-anything#readme",
   "ava": {
-    "extensions": ["ts"],
-    "require": ["ts-node/register"]
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "tsconfig-paths/register",
+      "ts-node/register"
+    ]
   }
 }
