@@ -29,8 +29,8 @@
     "flatten-anything": "^2.0.3",
     "rollup": "^2.33.1",
     "rollup-plugin-typescript2": "^0.29.0",
-    "tsconfig-paths": "^3.9.0",
     "ts-node": "^9.0.0",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^4.0.5"
   },
   "keywords": [
