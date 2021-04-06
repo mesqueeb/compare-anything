@@ -30,6 +30,15 @@ test('compareObjectsBasedOn - check nested props flat', (t) => {
   t.deepEqual(result.equal, false)
 })
 
+test('compareObjectsBasedOn - check nested props flattened', (t) => {
+  const base = { 'nested.deep.a': 1, 'nested.deep.b': 2 }
+  const check = { 'nested.deep.a': 1, 'nested.deep.b': 3 }
+  const result = compareObjectsBasedOn(['nested.deep.a', 'nested.deep.b'], [base, check])
+  t.deepEqual(result.differentProps, ['nested.deep.b'])
+  t.deepEqual(result.differentPropsPicked, [{ 'nested.deep.b': 2 }, { 'nested.deep.b': 3 }])
+  t.deepEqual(result.equal, false)
+})
+
 test('compareObjectsBasedOn - ok', (t) => {
   const base = { a: 1, b: true, c: 'CC' }
   const check = { a: 1, c: 'CC', d: 1 }
