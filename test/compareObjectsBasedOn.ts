@@ -2,7 +2,7 @@
 import test from 'ava'
 import { compareObjectsBasedOn } from '../src'
 
-test('compareObjectsBasedOn', t => {
+test('compareObjectsBasedOn', (t) => {
   const base = { a: 1, b: true, c: 'CC' }
   const check = { d: 1 }
   const result = compareObjectsBasedOn(['a', 'b'], [base, check])
@@ -21,7 +21,7 @@ test('compareObjectsBasedOn', t => {
 //   t.deepEqual(result.equal, false)
 // })
 
-test('compareObjectsBasedOn - check nested props flat', t => {
+test('compareObjectsBasedOn - check nested props flat', (t) => {
   const base = { nested: { a: 1, b: 2 } }
   const check = { nested: { a: 1, b: 3 } }
   const result = compareObjectsBasedOn(['nested'], [base, check])
@@ -30,7 +30,7 @@ test('compareObjectsBasedOn - check nested props flat', t => {
   t.deepEqual(result.equal, false)
 })
 
-test('compareObjectsBasedOn - ok', t => {
+test('compareObjectsBasedOn - ok', (t) => {
   const base = { a: 1, b: true, c: 'CC' }
   const check = { a: 1, c: 'CC', d: 1 }
   const result = compareObjectsBasedOn(['a', 'c'], [base, check])
