@@ -1,5 +1,8 @@
 # Compare anything 🛰
 
+<a href="https://www.npmjs.com/package/compare-anything"><img src="https://img.shields.io/npm/v/compare-anything.svg" alt="Total Downloads"></a>
+<a href="https://www.npmjs.com/package/compare-anything"><img src="https://img.shields.io/npm/dw/compare-anything.svg" alt="Latest Stable Version"></a>
+
 ```
 npm i compare-anything
 ```
