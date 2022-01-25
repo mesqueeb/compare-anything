@@ -2,7 +2,7 @@
   "name": "compare-anything",
   "sideEffects": false,
   "type": "module",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "Compares objects and arrays and tells you which props or values are duplicates, and which are only present once.",
   "module": "./dist/index.es.js",
   "main": "./dist/index.cjs",
