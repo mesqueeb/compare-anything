@@ -7,14 +7,14 @@ export function compareObjectProps(
   ...params: Record<string, any>[]
 ): {
   props: string[]
-  presentInAll: { [prop: string]: boolean }
-  perProp: { [prop: string]: Record<string, any> }
-  presentIn: { [prop: string]: number[] }
+  presentInAll: { [key in string]: boolean }
+  perProp: { [key in string]: Record<string, any> }
+  presentIn: { [key in string]: number[] }
 } {
-  const propsSet = new Set()
-  const res = {
-    props: null,
-    presentInAll: null,
+  const propsSet = new Set<string>()
+  const res: ReturnType<typeof compareObjectProps> = {
+    props: [],
+    presentInAll: {},
     presentIn: {},
     perProp: {},
   }
@@ -31,7 +31,7 @@ export function compareObjectProps(
     })
   })
   const paramCount = params.length
-  res.presentInAll = Object.keys(res.presentIn).reduce((carry, prop) => {
+  res.presentInAll = Object.keys(res.presentIn).reduce<{ [key in string]: boolean }>((carry, prop) => {
     const propCount = res.presentIn[prop].length
     carry[prop] = propCount === paramCount
     return carry
@@ -45,25 +45,16 @@ export function compareArrays(
 ): {
   values: any[]
   infoPerValue: {
-    [prop: string]: {
+    [key in string]: {
       indexPerArray: (number | undefined)[]
       presentInAll: boolean
     }
   }
-  presentInAll: any[]
+  presentInAll: string[]
 } {
   const valuesSet = new Set()
-  const res: {
-    values: null | any[]
-    infoPerValue: {
-      [val: string]: {
-        indexPerArray: (number | undefined)[]
-        presentInAll: boolean
-      }
-    }
-    presentInAll: string[]
-  } = {
-    values: null,
+  const res: ReturnType<typeof compareArrays> = {
+    values: [],
     infoPerValue: {},
     presentInAll: [],
   }
