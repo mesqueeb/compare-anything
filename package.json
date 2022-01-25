@@ -1,7 +1,6 @@
 {
   "name": "compare-anything",
   "sideEffects": false,
-  "type": "module",
   "version": "0.3.7",
   "description": "Compares objects and arrays and tells you which props or values are duplicates, and which are only present once.",
   "module": "./dist/index.es.js",
@@ -17,10 +16,6 @@
   "files": [
     "dist"
   ],
-  "engines": {
-    "node": ">=12.13",
-    "npm": ">=7"
-  },
   "repository": "https://github.com/mesqueeb/compare-anything",
   "author": "Luca Ban - Mesqueeb",
   "funding": "https://github.com/sponsors/mesqueeb",
