@@ -1,8 +1,8 @@
-import test from 'ava'
+import { test, expect } from 'vitest'
 import { flatten } from 'flatten-anything'
 import { compareObjectProps, compareArrays } from '../src/index'
 
-test('compareObjectProps', t => {
+test('compareObjectProps', () => {
   let res, objectA, objectB
   objectA = { a: '', b: '', c: '', d: '' }
   objectB = { b: '', c: '', e: '', f: '' }
@@ -23,7 +23,7 @@ test('compareObjectProps', t => {
   })
 })
 
-test('compareObjectProps 3 or more', t => {
+test('compareObjectProps 3 or more', () => {
   let res, objectA, objectB, objectC, objectD
   objectA = { a: '', b: '', c: '', d: '' }
   objectB = { b: '', c: '', e: '', f: '' }
@@ -53,7 +53,7 @@ test('compareObjectProps 3 or more', t => {
   })
 })
 
-test('compareObjectProps flat', t => {
+test('compareObjectProps flat', () => {
   let res
   const objectA = { nested: { a: '🃏️', b: '🎴' } }
   const objectB = { nested: { a: '🃏', c: '🀄️' } }
@@ -74,7 +74,7 @@ test('compareObjectProps flat', t => {
   })
 })
 
-test('compareArrays', t => {
+test('compareArrays', () => {
   let res, arrayA, arrayB
   arrayA = ['a', 'b', 'c', 'd']
   arrayB = ['b', 'c', 'e', 'f']

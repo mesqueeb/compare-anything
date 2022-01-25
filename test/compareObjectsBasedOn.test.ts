@@ -1,8 +1,8 @@
 // @ts-check
-import test from 'ava'
+import { test, expect } from 'vitest'
 import { compareObjectsBasedOn } from '../src'
 
-test('compareObjectsBasedOn', (t) => {
+test('compareObjectsBasedOn', () => {
   const base = { a: 1, b: true, c: 'CC' }
   const check = { d: 1 }
   const result = compareObjectsBasedOn(['a', 'b'], [base, check])
@@ -12,7 +12,7 @@ test('compareObjectsBasedOn', (t) => {
 })
 
 // I don't think I want this syntax because it's too complex:
-// test('compareObjectsBasedOn - nested', t => {
+// test('compareObjectsBasedOn - nested', () => {
 //   const base = { nested: { a: 1, b: 2 } }
 //   const check = { nested: { a: 1, b: 3 } }
 //   const result = compareObjectsBasedOn(['nested.a', 'nested.b'] as any[], [base, check])
@@ -21,7 +21,7 @@ test('compareObjectsBasedOn', (t) => {
 //   t.deepEqual(result.equal, false)
 // })
 
-test('compareObjectsBasedOn - check nested props flat', (t) => {
+test('compareObjectsBasedOn - check nested props flat', () => {
   const base = { nested: { a: 1, b: 2 } }
   const check = { nested: { a: 1, b: 3 } }
   const result = compareObjectsBasedOn(['nested'], [base, check])
@@ -30,7 +30,7 @@ test('compareObjectsBasedOn - check nested props flat', (t) => {
   t.deepEqual(result.equal, false)
 })
 
-test('compareObjectsBasedOn - check nested props flattened', (t) => {
+test('compareObjectsBasedOn - check nested props flattened', () => {
   const base = { 'nested.deep.a': 1, 'nested.deep.b': 2 }
   const check = { 'nested.deep.a': 1, 'nested.deep.b': 3 }
   const result = compareObjectsBasedOn(['nested.deep.a', 'nested.deep.b'], [base, check])
@@ -39,7 +39,7 @@ test('compareObjectsBasedOn - check nested props flattened', (t) => {
   t.deepEqual(result.equal, false)
 })
 
-test('compareObjectsBasedOn - ok', (t) => {
+test('compareObjectsBasedOn - ok', () => {
   const base = { a: 1, b: true, c: 'CC' }
   const check = { a: 1, c: 'CC', d: 1 }
   const result = compareObjectsBasedOn(['a', 'c'], [base, check])
