@@ -18,8 +18,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">=12.13",
-    "npm": ">=7"
+    "node": ">=12.13"
   },
   "repository": "https://github.com/mesqueeb/compare-anything",
   "author": "Luca Ban - Mesqueeb",
