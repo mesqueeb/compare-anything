@@ -1,4 +1,4 @@
-export declare type ComparisonObjects<ObjectType> = {
+export type ComparisonObjects<ObjectType> = {
     differentProps: (keyof ObjectType)[];
     differentPropsPicked: Partial<ObjectType>[];
     equal: boolean;

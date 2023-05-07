@@ -1,5 +1,5 @@
 import { ComparisonObjects } from './compareObjectsBasedOn';
-export declare type ComparisonObjectArrays<ObjectType> = {
+export type ComparisonObjectArrays<ObjectType> = {
     perIndex: ComparisonObjects<ObjectType>[];
     equal: boolean;
 };
