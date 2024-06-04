@@ -1,6 +1,6 @@
 {
   "name": "compare-anything",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Compares objects and arrays and tells you which props or values are duplicates, and which are only present once.",
   "type": "module",
   "sideEffects": false,
