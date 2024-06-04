@@ -7,7 +7,7 @@ export type ComparisonObjects<ObjectType> = {
 }
 
 export function compareObjectsBasedOn<
-  ObjectType extends Record<string, any> | any = Record<string, any>
+  ObjectType extends { [key in string]: any } | any = { [key in string]: any },
 >(propKeys: (keyof ObjectType)[], objects: [ObjectType, ...any[]]): ComparisonObjects<ObjectType> {
   type PropKeys = keyof ObjectType
   const baseProps = propKeys
@@ -21,7 +21,7 @@ export function compareObjectsBasedOn<
   }, new Set() as Set<PropKeys>)
   const differentProps = [...differentPropsSet]
   const differentPropsPicked = objects.map((object) =>
-    pick(object, differentProps as string[])
+    pick(object, differentProps as string[]),
   ) as Partial<ObjectType>[]
   return {
     differentProps,

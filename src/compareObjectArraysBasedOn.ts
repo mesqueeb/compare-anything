@@ -1,4 +1,4 @@
-import { ComparisonObjects, compareObjectsBasedOn } from './compareObjectsBasedOn'
+import { ComparisonObjects, compareObjectsBasedOn } from './compareObjectsBasedOn.js'
 
 export type ComparisonObjectArrays<ObjectType> = {
   perIndex: ComparisonObjects<ObjectType>[]
@@ -6,10 +6,10 @@ export type ComparisonObjectArrays<ObjectType> = {
 }
 
 export function compareObjectArraysBasedOn<
-  ObjectType extends Record<string, any> | any = Record<string, any>
+  ObjectType extends { [key in string]: any } | any = { [key in string]: any },
 >(
   propKeys: (keyof ObjectType)[],
-  objectArrays: [[ObjectType, ...any[]], ...any[]]
+  objectArrays: [[ObjectType, ...any[]], ...any[]],
 ): ComparisonObjectArrays<ObjectType> {
   const firstArray = objectArrays[0]
   const comparison: ComparisonObjectArrays<ObjectType> = {

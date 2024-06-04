@@ -1,25 +1,11 @@
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[sass]": { "editor.defaultFormatter": "syler.sass-indented" },
-  // disable conflicting formatting
-  "javascript.validate.enable": true,
-  "typescript.format.enable": true,
-  "standard.enable": false,
-  // global important defaults
-  "editor.tabSize": 2, // make sure this is the same as .prettierrc
+  "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "files.trimFinalNewlines": true,
   "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  // sass
-  "sass.format.debug": false,
-  "sass.format.deleteEmptyRows": true,
-  "sass.format.deleteWhitespace": true,
-  "sass.format.convert": true,
-  "sass.format.setPropertySpace": true,
-  // typescript
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "javascript.preferences.importModuleSpecifierEnding": "js",
+  "typescript.preferences.importModuleSpecifierEnding": "js"
 }

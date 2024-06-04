@@ -1,6 +1,6 @@
-import { test, expect } from 'vitest'
 import { flatten } from 'flatten-anything'
-import { compareObjectProps, compareArrays } from '../src/index'
+import { expect, test } from 'vitest'
+import { compareArrays, compareObjectProps } from '../src/index.js'
 
 test('compareObjectProps', () => {
   let res, objectA, objectB

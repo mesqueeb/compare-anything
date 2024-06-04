@@ -1,6 +1,6 @@
 // @ts-check
-import { test, expect } from 'vitest'
-import { compareObjectsBasedOn } from '../src'
+import { expect, test } from 'vitest'
+import { compareObjectsBasedOn } from '../src/index.js'
 
 test('compareObjectsBasedOn', () => {
   const base = { a: 1, b: true, c: 'CC' }

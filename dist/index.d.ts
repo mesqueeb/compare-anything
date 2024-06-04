@@ -1,29 +1,22 @@
-type ComparisonObjects<ObjectType> = {
-    differentProps: (keyof ObjectType)[];
-    differentPropsPicked: Partial<ObjectType>[];
-    equal: boolean;
-};
-declare function compareObjectsBasedOn<ObjectType extends Record<string, any> | any = Record<string, any>>(propKeys: (keyof ObjectType)[], objects: [ObjectType, ...any[]]): ComparisonObjects<ObjectType>;
-
-type ComparisonObjectArrays<ObjectType> = {
-    perIndex: ComparisonObjects<ObjectType>[];
-    equal: boolean;
-};
-declare function compareObjectArraysBasedOn<ObjectType extends Record<string, any> | any = Record<string, any>>(propKeys: (keyof ObjectType)[], objectArrays: [[ObjectType, ...any[]], ...any[]]): ComparisonObjectArrays<ObjectType>;
-
-declare function compareObjectProps(...params: Record<string, any>[]): {
+export { compareObjectArraysBasedOn } from './compareObjectArraysBasedOn.js';
+export { compareObjectsBasedOn } from './compareObjectsBasedOn.js';
+export declare function compareObjectProps(...params: {
+    [key in string]: any;
+}[]): {
     props: string[];
     presentInAll: {
         [key in string]: boolean;
     };
     perProp: {
-        [key in string]: Record<string, any>;
+        [key in string]: {
+            [key in string]: any;
+        };
     };
     presentIn: {
         [key in string]: number[];
     };
 };
-declare function compareArrays(...params: any[][]): {
+export declare function compareArrays(...params: any[][]): {
     values: any[];
     infoPerValue: {
         [key in string]: {
@@ -33,5 +26,3 @@ declare function compareArrays(...params: any[][]): {
     };
     presentInAll: string[];
 };
-
-export { compareArrays, compareObjectArraysBasedOn, compareObjectProps, compareObjectsBasedOn };
