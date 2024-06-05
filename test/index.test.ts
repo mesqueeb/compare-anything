@@ -1,4 +1,3 @@
-import { flatten } from 'flatten-anything'
 import { expect, test } from 'vitest'
 import { compareArrays, compareObjectProps } from '../src/index.js'
 
@@ -57,10 +56,8 @@ test('compareObjectProps flat', () => {
   let res
   const objectA = { nested: { a: '🃏️', b: '🎴' } }
   const objectB = { nested: { a: '🃏', c: '🀄️' } }
-  const flatA = flatten(objectA)
-  // →　{'nested.a': '🃏️', 'nested.b': '🎴'}
-  const flatB = flatten(objectB)
-  // →　{'nested.a': '🃏️', 'nested.c': '🀄️'}
+  const flatA = { 'nested.a': '🃏️', 'nested.b': '🎴' }
+  const flatB = { 'nested.a': '🃏️', 'nested.c': '🀄️' }
   res = compareObjectProps(flatA, flatB)
   expect(res).toEqual({
     props: ['nested.a', 'nested.b', 'nested.c'],

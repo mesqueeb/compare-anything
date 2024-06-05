@@ -1,4 +1,3 @@
-// @ts-check
 import { expect, test } from 'vitest'
 import { compareObjectsBasedOn } from '../src/index.js'
 
