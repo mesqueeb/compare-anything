@@ -17,8 +17,8 @@
     "release": "npm run lint && npm run build && np"
   },
   "dependencies": {
-    "filter-anything": "^4.0.0",
-    "is-what": "^5.0.0"
+    "filter-anything": "^4.0.1",
+    "is-what": "^5.0.1"
   },
   "devDependencies": {
     "del-cli": "^5.1.0",
