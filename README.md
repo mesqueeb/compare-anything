@@ -10,6 +10,7 @@ npm i compare-anything
 Compares objects and arrays and tells you which props or values are duplicates, and which are only present once.
 
 It works just like you would compare two columns in excel! But who needs excel when you've got JavaScript, am I right? 😃
+
 ## Meet the family (more tiny utils with TS support)
 
 - [is-what 🙉](https://github.com/mesqueeb/is-what)
@@ -87,9 +88,9 @@ When you need to find duplicate objects based on one single prop value of that o
 
 ```js
 compareObjectProps(
-  ...arrayOfObjects.map(obj => {
+  ...arrayOfObjects.map((obj) => {
     return { [obj.idField]: obj }
-  })
+  }),
 )
 ```
 
